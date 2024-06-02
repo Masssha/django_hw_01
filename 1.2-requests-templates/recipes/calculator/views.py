@@ -27,7 +27,7 @@ def omlet(request):
     servings = int(request.GET.get("servings", 1))
     ings = {}
     for ing, number in DATA['omlet'].items():
-        ings[ing] = number*servings
+        ings[ing] = round(number*servings, 2)
     context = {
         'recipe': ings
     }
@@ -38,7 +38,7 @@ def pasta(request):
     servings = int(request.GET.get("servings", 1))
     ings = {}
     for ing, number in DATA['pasta'].items():
-        ings[ing] = number*servings
+        ings[ing] = round(number*servings, 2)
     context = {
         'recipe': ings
     }
@@ -49,7 +49,7 @@ def buter(request):
     servings = int(request.GET.get("servings", 1))
     ings = {}
     for ing, number in DATA['buter'].items():
-        ings[ing] = number*servings
+        ings[ing] = round(number*servings, 2)
     context = {
         'recipe': ings
     }
