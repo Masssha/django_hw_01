@@ -12,5 +12,14 @@ class Article(models.Model):
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
 
+class Tag(models.Model):
+    title = models.CharField(max_length=256, verbose_name='Категория')
+    articles = models.ManyToManyField(Article, related_name='tag')
+
+class Scope(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='scope')
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE, related_name='scope')
+    quantity = models.IntegerField()
+
     def __str__(self):
         return self.title
