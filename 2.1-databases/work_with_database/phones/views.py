@@ -2,19 +2,6 @@ from django.shortcuts import render, redirect
 import csv
 from phones.models import Phone
 
-# def create_phones(request):
-#     with open('..\phones.csv', encoding="utf-8") as csvfile:
-#         phones = csv.reader(csvfile, delimiter=';')
-#         phones_list = list(phones)
-#         # print(phones_list)
-#         for phone in phones_list:
-            # Phone.objects.create(name=phone[1], image=phone[2], price=phone[3], release_date=phone[4], lte_exists=phone[5])
-
-# def check():
-#     phones = Phone.objects.all()
-#     for p in phones:
-#         print(p.name)
-# check()
 
 
 def index(request):
