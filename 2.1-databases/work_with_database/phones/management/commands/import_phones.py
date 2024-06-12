@@ -1,4 +1,6 @@
 import csv
+import uuid
+from datetime import datetime
 
 from django.core.management.base import BaseCommand
 from phones.models import Phone
@@ -10,9 +12,13 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         with open('phones.csv', 'r') as file:
-            phones = list(csv.DictReader(file, delimiter=';'))
+            phones = csv.DictReader(file, delimiter=';')
 
-        for phone in phones:
-            Phone.objects.create(name=phone[1], image=phone[2], price=phone[3], release_date=phone[4], lte_exists=phone[5])
-            # TODO: Добавьте сохранение модели
+            for phone in phones:
+                print(phone)
+                # slug = uuid.uuid4()
+                release_date = datetime.strptime(phone['release_date'], '%Y-%m-%d')
+                slug = str(phone['name']).replace(' ', '-')
+                Phone.objects.create(name=phone['name'], image=phone['image'], price=phone['price'], release_date=release_date, lte_exists=phone['lte_exists'], slug=slug)
+            # # # TODO: Добавьте сохранение модели
 

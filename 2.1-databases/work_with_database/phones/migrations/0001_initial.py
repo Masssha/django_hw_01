@@ -18,6 +18,8 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=50)),
                 ('price', models.DecimalField(decimal_places=2, max_digits=6)),
                 ('image', models.ImageField(upload_to='')),
+                ('release_date',models.DateField()),
+                ('lte_exists', models.BooleanField()),
                 ('slug', models.SlugField(unique=True)),
             ],
         ),
